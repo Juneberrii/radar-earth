@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar Earth – Earth's changing surface, seen by NISAR</title>
+<meta name="description" content="Radar Earth by June Rosenthal: wildfire burn scars, floods and ground motion seen by the NASA-ISRO NISAR radar satellite.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="statusbar">
+  <div class="wrap">
+    <span class="live">Radar Earth · NISAR L-band SAR</span>
+    <span>Provisional data · ASF DAAC</span>
+    <span id="utc-clock">UTC --:--:--</span>
+  </div>
+</div>
+<div class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="index.html"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#8BE8B0" stroke-width="1.3" aria-hidden="true"><circle cx="13" cy="13" r="11"/><circle cx="13" cy="13" r="6" stroke-opacity=".5"/><path d="M13 13 L22 6"/><circle cx="13" cy="13" r="1.6" fill="#8BE8B0" stroke="none"/></svg><span class="brand-name">Radar Earth</span></a>
+    <div class="nav-links">
+      <a href="fire.html"><span class="num">01</span>Burn Scars</a>
+      <a href="water.html"><span class="num">02</span>Floods &amp; Wetlands</a>
+      <a href="ground.html"><span class="num">03</span>Ground Motion</a>
+      <a href="index.html#data"><span class="num">04</span>Data</a>
+    </div>
+  </nav>
+
+  <main class="home-grid">
+    <section class="intro">
+      <div class="label">NASA Space Apps 2026 · Earth observation</div>
+      <h1>Tracking Earth’s surface from orbit.</h1>
+      <p class="byline">by <strong>June Rosenthal</strong></p>
+      <p>Fires sweep through forests, wetlands fill and drain, and the ground itself shifts beneath our feet. The NASA–ISRO NISAR satellite sees it all with radar – day and night, through clouds and smoke. Switch the layers on and off and pick a target on the globe.</p>
+
+      <div class="layers">
+        <div class="layers-head"><span class="label">Layers</span><button type="button" class="link-btn" id="show-all">[ Show all ]</button></div>
+        <div id="layers" class="layers" style="margin-top:0"></div>
+      </div>
+    </section>
+
+    <section class="globe-col" aria-label="Globe">
+      <div class="globe-frame">
+        <svg id="globe" role="img" aria-label="Interactive globe showing places where NISAR saw the surface change"></svg>
+      </div>
+      <div class="readout" aria-live="off">
+        <div><div class="label">Cursor</div><div class="val" id="ro-cursor">—</div></div>
+        <div><div class="label">View center</div><div class="val" id="ro-center">—</div></div>
+        <div><div class="label">Targets in view</div><div class="val" id="ro-visible">—</div></div>
+      </div>
+      <div class="globe-controls">
+        <span class="label" style="align-self:center">Drag to rotate · click a target</span>
+        <button type="button" class="btn" id="spin">Pause rotation</button>
+      </div>
+    </section>
+
+    <aside class="side-stack">
+      <div id="info" class="panel info">
+        <div class="panel-head"><span class="label"><b>Target</b></span><span class="label">Standby</span></div>
+        <h2 style="font-size:20px">No target selected</h2>
+        <p>Each diamond marks a place where NISAR saw the surface change. Click one to lock on.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><span class="label"><b>NISAR telemetry</b></span><span class="label" style="color:var(--radar)">Live</span></div>
+        <dl class="telemetry">
+          <dt>Mission day</dt><dd class="live" id="tm-day">—</dd>
+          <dt>Orbits flown</dt><dd class="live" id="tm-orbits">—</dd>
+          <dt>Altitude</dt><dd>747 km</dd>
+          <dt>Orbit period</dt><dd>≈ 100 min</dd>
+          <dt>Inclination</dt><dd>98.5° (sun-sync)</dd>
+          <dt>Repeat cycle</dt><dd>12 days</dd>
+          <dt>Radars</dt><dd>L 24 cm · S 9.4 cm</dd>
+          <dt>Antenna</dt><dd>12 m reflector</dd>
+          <dt>Launched</dt><dd>30 Jul 2025</dd>
+        </dl>
+        <p class="fine" style="margin-top:12px">Mission day and orbit count are estimated from the launch date and orbit period.</p>
+      </div>
+    </aside>
+  </main>
+
+  <section class="section">
+    <div class="section-head"><span class="label">Three kinds of change</span></div>
+    <div class="cards">
+      <a class="panel card-link" href="fire.html" style="--c:var(--fire)">
+        <span class="label">01 · Fast · days to weeks</span>
+        <h3>Burn Scars</h3>
+        <p>Forests in Utah, California and Spain lose their radar glow after wildfires.</p>
+        <span class="go">View 3 targets →</span>
+      </a>
+      <a class="panel card-link" href="water.html" style="--c:var(--water)">
+        <span class="label">02 · Seasonal · months</span>
+        <h3>Floods &amp; Wetlands</h3>
+        <p>Monsoon and river floods fill and drain wetlands in Bangladesh, Cambodia and Mali.</p>
+        <span class="go">View 3 targets →</span>
+      </a>
+      <a class="panel card-link" href="ground.html" style="--c:var(--ground)">
+        <span class="label">03 · Invisible · centimeters</span>
+        <h3>Ground Motion</h3>
+        <p>Centimeter-scale shifts around Tokyo – and how to tell real ground movement from tricks of the sky.</p>
+        <span class="go">View target →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><span class="label">What's next for NISAR</span></div>
+    <div class="cards">
+      <div class="panel card-link" style="--c:var(--water)">
+        <span class="label">Food &amp; water</span>
+        <h3>Crops and soil moisture</h3>
+        <p>With a pass every 12 days, NISAR can follow crops from planting to harvest and see how wet the soil is – useful for farmers and drought warnings.</p>
+      </div>
+      <div class="panel card-link" style="--c:var(--fire)">
+        <span class="label">Disasters</span>
+        <h3>Fast response</h3>
+        <p>Radar works at night and through clouds and smoke, so maps of floods, fires and earthquake damage can be made when they are needed most.</p>
+      </div>
+      <div class="panel card-link" style="--c:var(--ground)">
+        <span class="label">Ice &amp; infrastructure</span>
+        <h3>Millimeter watch</h3>
+        <p>Stacking many passes can reveal glaciers flowing, sea ice drifting, and cities, coasts, dams and bridges slowly sinking – before it becomes dangerous.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="data">
+    <div class="section-head"><span class="label">04 · Data &amp; methods</span></div>
+    <div class="panel" style="display:flex;flex-direction:column;gap:14px">
+      <p style="color:var(--text-2)">All images come from the NASA–ISRO Synthetic Aperture Radar (NISAR) mission, L-band, downloaded from the Alaska Satellite Facility (ASF DAAC). Burn scars and floods use the Level-2 <strong>GCOV</strong> product (radar backscatter, from the official latitude/longitude browse images, cropped with each scene's footprint coordinates). Ground motion uses the Level-2 <strong>GUNW</strong> product (unwrapped interferogram), converted from phase to centimeters with my own Python script (movement = phase × wavelength ÷ 4π, wavelength ≈ 23.8 cm), with low-coherence pixels hidden and a smooth atmospheric trend removed.</p>
+      <div style="overflow-x:auto">
+      <table class="data-table">
+        <tr><th>Location</th><th>Dates (2026)</th><th>NISAR products</th></tr>
+        <tr><td>Burn Scars – Widemouth 2 Fire, Utah</td><td>Jul 19 → Sep 17</td><td><code>NISAR_L2_PR_GCOV_025_157_D_069_4005_DHDH_A_20260719T022249_20260719T022324_P05023_N_F_J_001</code><br><code>NISAR_L2_PR_GCOV_030_157_D_069_4005_DHDH_A_20260917T022247_20260917T022322_P05023_N_F_J_001</code></td></tr>
+        <tr><td>Burn Scars – Plaskett Fire, California</td><td>Aug 16 → Oct 3</td><td><code>NISAR_L2_PR_GCOV_028_042_D_070_4005_DHDH_A_20260816T025639_20260816T025713_P05023_N_F_J_001</code><br><code>NISAR_L2_PR_GCOV_032_042_D_070_4005_DHDH_A_20261003T025638_20261003T025713_P05023_N_F_J_001</code></td></tr>
+        <tr><td>Burn Scars – Sierra Norte Fire, Spain</td><td>Jul 2 → Aug 19</td><td><code>NISAR_L2_PR_GCOV_024_095_D_068_2005_DHDH_A_20260702T190926_20260702T191004_P05023_N_F_J_001</code><br><code>NISAR_L2_PR_GCOV_028_095_D_068_2005_DHDH_A_20260819T190923_20260819T191000_P05023_N_F_J_001</code></td></tr>
+        <tr><td>Floods &amp; Wetlands – Haor Wetlands, Bangladesh</td><td>Sep 12 → Oct 30</td><td><code>NISAR_L2_PR_GCOV_030_091_D_076_4005_DHDH_A_20260912T123420_20260912T123455_P05023_N_F_J_001</code><br><code>NISAR_L2_PR_GCOV_034_091_D_076_4005_DHDH_A_20261030T123421_20261030T123455_P05036_N_F_J_001</code></td></tr>
+        <tr><td>Floods &amp; Wetlands – Tonle Sap, Cambodia</td><td>Jun 19 → Oct 5</td><td><code>NISAR_L2_PR_GCOV_023_083_A_008_2005_DHDH_M_20260619T223637_20260619T223711_P05023_N_F_J_001</code><br><code>NISAR_L2_PR_GCOV_032_083_A_008_2005_DHDH_M_20261005T223633_20261005T223708_P05023_N_F_J_001</code></td></tr>
+        <tr><td>Floods &amp; Wetlands – Inner Niger Delta, Mali</td><td>Jun 24 → Oct 10</td><td><code>NISAR_L2_PR_GCOV_023_145_A_009_2005_DHDH_A_20260624T055000_20260624T055035_P05023_N_F_J_001</code><br><code>NISAR_L2_PR_GCOV_032_145_A_009_2005_DHDH_A_20261010T054957_20261010T055031_P05023_N_F_J_001</code></td></tr>
+        <tr><td>Ground Motion – Tokyo region, Japan</td><td>Sep 21 → Oct 3</td><td><code>NISAR_L2_PR_GUNW_031_046_D_070_032_4000_SH_20260921T093610_20260921T093645_20261003T093610_20261003T093645_P05023_N_F_J_001</code></td></tr>
+      </table>
+      </div>
+      <p class="source">NISAR data are provisional (calibrated, partially validated). The October Bangladesh scene uses a newer processing version than the September scene; it is used for visual comparison only. Open-water percentages are estimated by counting dark pixels.</p>
+    </div>
+  </section>
+
+  <footer>Radar Earth · built by <strong>June Rosenthal</strong> · NASA Space Apps Challenge 2026 · Data: NASA–ISRO NISAR via ASF DAAC</footer>
+</div>
+<script src="js/sites.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/chrome.js"></script>
+<script src="js/globe.js"></script>
+</body>
+</html>

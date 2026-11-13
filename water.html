@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floods & Wetlands – Radar Earth</title>
+<meta name="description" content="Radar Earth by June Rosenthal: wildfire burn scars, floods and ground motion seen by the NASA-ISRO NISAR radar satellite.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-type="water">
+<div class="statusbar">
+  <div class="wrap">
+    <span class="live">Radar Earth · NISAR L-band SAR</span>
+    <span>Provisional data · ASF DAAC</span>
+    <span id="utc-clock">UTC --:--:--</span>
+  </div>
+</div>
+<div class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="index.html"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#8BE8B0" stroke-width="1.3" aria-hidden="true"><circle cx="13" cy="13" r="11"/><circle cx="13" cy="13" r="6" stroke-opacity=".5"/><path d="M13 13 L22 6"/><circle cx="13" cy="13" r="1.6" fill="#8BE8B0" stroke="none"/></svg><span class="brand-name">Radar Earth</span></a>
+    <div class="nav-links">
+      <a href="fire.html"><span class="num">01</span>Burn Scars</a>
+      <a href="water.html" aria-current="page"><span class="num">02</span>Floods &amp; Wetlands</a>
+      <a href="ground.html"><span class="num">03</span>Ground Motion</a>
+      <a href="index.html#data"><span class="num">04</span>Data</a>
+    </div>
+  </nav>
+
+  <header class="page-head">
+    <span class="label">02 · Section</span>
+    <h1>Floods &amp; Wetlands</h1>
+    <p>Open water acts like a mirror for radar, so lakes and floods look black. Watch wetlands fill and drain with the seasons.</p>
+    <div class="picker" id="picker" role="group" aria-label="Choose a target"></div>
+  </header>
+
+  <main class="story">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="viewer-bar">
+        <span class="label">Before ◂ drag ▸ after</span>
+        <button type="button" class="btn toggle-btn" id="lens-btn" aria-pressed="false">Zoom lens: off</button>
+      </div>
+      <div class="compare" id="viewer"></div>
+      <label class="slider-row">
+        <span>Compare</span>
+        <input type="range" min="0" max="100" value="50" id="slider" aria-label="Before and after comparison position">
+      </label>
+    </div>
+
+    <div class="side">
+      <div class="panel">
+        <div class="panel-head"><span class="label"><b>Target</b></span><span class="label">Locked</span></div>
+        <h2 id="site-name" style="font-size:28px"></h2>
+        <div id="site-place" class="label" style="margin-top:8px;line-height:1.7"></div>
+        <p id="site-text" class="lead" style="margin-top:14px"></p>
+      </div>
+      <div class="panel" style="display:flex;flex-direction:column;gap:10px">
+        <div class="panel-head" style="margin-bottom:4px"><span class="label"><b>Legend</b></span></div>
+        <div class="legend-row"><span class="swatch" style="background:#0E120E"></span>Black – open water (radar bounces away like off a mirror)</div>
+        <div class="legend-row"><span class="swatch" style="background:#E58BE5"></span>Pink – wet fields, villages and flooded plants</div>
+        <div class="legend-row"><span class="swatch" style="background:#8EEBA0"></span>Green – forests and dense vegetation</div>
+      </div>
+      <div class="panel" id="water-chart" style="display:none">
+        <div class="panel-head"><span class="label"><b>Open water in view</b></span><span class="label">% of area</span></div>
+        <div class="bars"></div>
+        <p class="source" style="margin-top:10px">Estimated by counting dark (water) pixels. Flooded forest can look bright instead of dark, so this counts open water only.</p>
+      </div>
+      <div class="panel" id="why-panel">
+        <div class="panel-head"><span class="label"><b>Why did this happen?</b></span><span class="label">Drivers</span></div>
+        <p id="site-why" style="font-size:15px;color:var(--text-2)"></p>
+      </div>
+      <div class="panel" id="matters-panel">
+        <div class="panel-head"><span class="label"><b>Why it matters</b></span><span class="label">Impact</span></div>
+        <p id="site-matters" style="font-size:15px;color:var(--text-2)"></p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><span class="label"><b>Which polarization shows this?</b></span><span class="label">HH · HV</span></div>
+        <p style="font-size:15px;color:var(--text-2)">NISAR sends radar waves that vibrate horizontally (H) and listens for echoes in two ways. <strong>HH</strong> (sent H, received H) is strong from rough ground, buildings and flooded trees. <strong>HV</strong> (sent H, received V) only comes back when the wave gets scrambled inside a 3-D structure like a tree crown – so it is the best vegetation detector. These images combine both: forests glow because of strong HV, burned slopes lose it, and calm water stays dark in both.</p>
+      </div>
+      <div class="stats" id="stats"></div>
+      <p class="source" id="site-source"></p>
+    </div>
+  </main>
+
+  <footer>Radar Earth · built by <strong>June Rosenthal</strong> · NASA Space Apps Challenge 2026 · Data: NASA–ISRO NISAR via ASF DAAC</footer>
+</div>
+<script src="js/sites.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/chrome.js"></script>
+<script src="js/story.js"></script>
+</body>
+</html>
